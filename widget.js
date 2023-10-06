@@ -6,7 +6,7 @@ class Widget {
     this.open = false;
     this.initialise();
     this.createStyles();
-    // this.checkForMessages();
+    this.checkForMessages();
     this.previousMessages = []
     setTimeout(()=>{
         this.connectsocket()
@@ -303,13 +303,13 @@ class Widget {
     body: JSON.stringify({
       pluginId: "65133396e05f832e9576aade",
       domain: "1415inc.com",
-      visitorId: "651747b92cb44bc4e54eccde",
-      guestId: 3
+      visitorId: "651747d12cb44bc4e54eccff",
+      guestId: 14
     })
   }).then(res=>res.json()).then(res=>{
     console.log('chat',res.conversation)
     this.previousMessages = [...res.conversation]
-    res.conversation.map((message)=>{
+    res?.conversation?.map((message)=>{
       if(message.direction==='inbound'){
         document.querySelector(
       "#messages"
@@ -339,8 +339,8 @@ function sendMessageToServer(message) {
     method:'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
-      visitorId:'651747b92cb44bc4e54eccde',
-      guestId:'3',
+      visitorId:'651747d12cb44bc4e54eccff',
+      guestId:'14',
       agentId:'650362cc59e62b6a56d3eb1b',
       agentName:'Agent One',
       bodyText:message
